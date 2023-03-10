@@ -32,6 +32,10 @@ class Photographer {
 	get quote(){
 		return this.#tagline
 	}
+
+	get location(){
+		return this.#city + ', ' + this.#country
+	}
 }
 
 /*
