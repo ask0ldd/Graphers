@@ -24,6 +24,14 @@ class Photographer {
 	get name(){
 		return this.#name
 	}
+
+	get dailyfees(){
+		return this.#price+'€/jour'
+	}
+
+	get quote(){
+		return this.#tagline
+	}
 }
 
 /*

@@ -21,9 +21,16 @@
                 "portrait": "account.png"
             },
         ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+        try{
+            const response =  await fetch("../data/photographers.json")
+            const datas = await response.json()
+            console.log(datas)
+            // et bien retourner le tableau photographers seulement une fois récupéré
+            return {photographers: datas.photographers}
+        }
+        catch(error){
+            console.error(error)
+        }
     }
 
     async function displayData(photographers) {
@@ -39,7 +46,7 @@
     async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
-        displayData(photographers);
+        if(photographers) displayData(photographers); // display une error dans le cas contraire
     };
     
     init();

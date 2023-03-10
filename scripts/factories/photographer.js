@@ -8,6 +8,7 @@ function photographerFactory(photographer) {
         const img = document.createElement( 'img' )
         img.setAttribute("src", picture)
         img.setAttribute("alt", name + ' picture')
+        // img.style.objectFit="cover" // ADDED
         const h2 = document.createElement( 'h2' )
         h2.textContent = photographer.name
         article.appendChild(img)
