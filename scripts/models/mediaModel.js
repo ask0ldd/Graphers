@@ -23,7 +23,91 @@
 
 
 // creer un media sans video et image puis etendre class Image / class Video
-class Media {
+
+class MediaBuilder {
+    #id
+    #owner
+    #title
+    #likes
+    #date
+    #price
+    constructor(media){
+        if(!media.id || !media.photographerId || !media.title || !media.date || !media.price) throw new Error('Cant create the requested object with such datas')
+        this.#id = media.id
+        this.#owner = media.photographerId
+        this.#likes = media.likes
+        this.#title = media.title
+        this.#date = media.date
+        this.#price = media.price
+    }
+
+    get id()    { return this.#id }
+    get owner() { return this.#owner }
+    get likes() { return this.#likes }
+    get title() { return this.#title }
+    get date()  { return this.#date }
+    get price() { return this.#price+'$' }
+
+
+}
+
+class Image extends MediaBuilder{
+    #src
+    constructor(media){
+        super(media)
+        this.#src = media.image
+    }
+
+    get src() { return this.#src }
+
+    buildDOM(){
+        const mediaContainer = document.createElement( 'article' )
+        const img = document.createElement( 'img' )
+        const datasContainer = document.createElement( 'div' )
+        const heading = document.createElement( 'h2' )
+        const likes = document.createElement( 'p' )
+
+        img.setAttribute("src", this.src)
+        mediaContainer.appendChild(img)
+
+        heading.textContent=this.title
+        likes.textContent=this.likes
+        datasContainer.appendChild(heading)
+        datasContainer.appendChild(likes)
+        mediaContainer.appendChild(datasContainer)
+
+        return MediaContainer
+    }
+}
+
+class Video extends MediaBuilder{
+    #src
+    constructor(media){
+        super(media)
+        this.#src = media.video
+    }
+
+    get src() { return this.#src }
+
+    buildDOM(){
+        const mediaContainer = document.createElement( 'article' )
+        const video = document.createElement( 'video' )
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*class Media {
     #id
     #owner
     #title
@@ -47,4 +131,4 @@ class Media {
             this.#src = media.image
         }
     }
-}
+}*/

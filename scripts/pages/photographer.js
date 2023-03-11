@@ -26,6 +26,10 @@ async function displayPhotographer(photographer) {
     photographersSection.appendChild(userCardDOM);
 }
 
+async function displayMedias(photographer){
+    
+}
+
 
 async function init() {
     // Récupère les datas des photographes

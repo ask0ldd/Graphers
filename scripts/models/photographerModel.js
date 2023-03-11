@@ -36,6 +36,8 @@ class Photographer {
 	get location(){
 		return this.#city + ', ' + this.#country
 	}
+
+	/* utiliser setter pour total likes? */
 }
 
 /*
