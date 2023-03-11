@@ -12,11 +12,13 @@
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <section class="photograph-header"> <!-- div to section -->
+      <!-- infos -->
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+      <!-- photo -->
+      </section>
     </main>
-    <div id="contact_modal">
+    <dialog id="contact_modal"> <!-- div to dialog-->
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
@@ -30,8 +32,13 @@
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
-		</div>
+		</dialog>
+    <script src="scripts/models/photographerModel.js"></script>
+    <script src="scripts/models/mediaModel.js"></script>
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/index.js"></script>
   </body>
 </html>

@@ -14,12 +14,15 @@ function photographerFactory(photographer) {
 
         const location = document.createElement( 'p' ) // ADDED
         location.textContent = photographer.location // ADDED
+        location.className="location" // ADDED
 
         const quote = document.createElement('p') // ADDED
         quote.textContent = photographer.quote // ADDED
+        quote.className="quote" // ADDED
 
         const fees = document.createElement('p') // ADDED
         fees.textContent = photographer.dailyfees // ADDED
+        fees.className="fees" // ADDED
 
         article.appendChild(img)
         article.appendChild(h2)
