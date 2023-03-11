@@ -17,6 +17,8 @@ async function getPhotographer() {
 }
 
 async function displayPhotographer(photographer) {
+
+    // manque la somme des likes dans le model pour la sticky bar
     const photographersSection = document.querySelector(".photograph-header");
 
     const photographerModel = photographerFactory(new Photographer(photographer));
