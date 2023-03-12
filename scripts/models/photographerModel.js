@@ -17,6 +17,9 @@ class Photographer {
 		this.#portrait = userDatas.portrait
     }
 
+	get id(){
+		return this.#id
+	}
 	get portrait(){
 		return "./assets/photographers/"+this.#portrait
 	}

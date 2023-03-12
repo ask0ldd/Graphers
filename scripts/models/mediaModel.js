@@ -24,7 +24,7 @@
 
 // creer un media sans video et image puis etendre class Image / class Video
 
-class MediaBuilder {
+class Media {
     #id
     #owner
     #title
@@ -51,23 +51,24 @@ class MediaBuilder {
 
 }
 
-class Image extends MediaBuilder{
+class Image extends Media{
     #src
     constructor(media){
         super(media)
-        this.#src = media.image
+        this.#src = './assets/works/'+media.image
+        //needs firstname of the owner to reconstruct the full image path
     }
 
     get src() { return this.#src }
 
-    buildDOM(){
+    buildDOMRepresentation(){
         const mediaContainer = document.createElement( 'article' )
         const img = document.createElement( 'img' )
         const datasContainer = document.createElement( 'div' )
         const heading = document.createElement( 'h2' )
         const likes = document.createElement( 'p' )
 
-        img.setAttribute("src", this.src)
+        img.setAttribute("src", this.#src)
         mediaContainer.appendChild(img)
 
         heading.textContent=this.title
@@ -76,22 +77,37 @@ class Image extends MediaBuilder{
         datasContainer.appendChild(likes)
         mediaContainer.appendChild(datasContainer)
 
-        return MediaContainer
+        return mediaContainer
     }
 }
 
-class Video extends MediaBuilder{
+class Video extends Media{
     #src
     constructor(media){
         super(media)
-        this.#src = media.video
+        this.#src = './assets/works/'+media.video // verifier bien mp4 ou erreur
     }
 
     get src() { return this.#src }
 
-    buildDOM(){
+    buildDOMRepresentation(){
         const mediaContainer = document.createElement( 'article' )
         const video = document.createElement( 'video' )
+        const datasContainer = document.createElement( 'div' )
+        const heading = document.createElement( 'h2' )
+        const likes = document.createElement( 'p' )
+
+        video.setAttribute("src", this.src)
+        video.setAttribute("controls", true)
+        mediaContainer.appendChild(video)
+
+        heading.textContent=this.title
+        likes.textContent=this.likes
+        datasContainer.appendChild(heading)
+        datasContainer.appendChild(likes)
+        mediaContainer.appendChild(datasContainer)
+
+        return mediaContainer
     }
 }
 

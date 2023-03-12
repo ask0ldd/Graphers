@@ -1,15 +1,8 @@
-//Mettre le code JavaScript lié à la page photographer.html
-async function getPhotographer() {
+async function fetchPhotographersnMedias(){
     try{
         const response =  await fetch("../data/photographers.json")
         const datas = await response.json()
-        console.log(datas)
-        const params = (new URL(document.location)).searchParams
-        const id = parseInt(params.get('id'))
-        const photographers = datas.photographers
-        const photographer = photographers.filter(photographer => photographer.id === id) // gerer si photographe inexistant ou si plusieurs photographes avec mm id
-        console.log(photographer)
-        return photographer[0]
+        return {photographers : datas.photographers, medias : datas.media}
     }
     catch(error){
         console.error(error)
@@ -26,15 +19,30 @@ async function displayPhotographer(photographer) {
     photographersSection.appendChild(userCardDOM);
 }
 
-async function displayMedias(photographer){
-    
+async function displayMedias(medias){
+    const gallerySection = document.querySelector(".gallery");
+    console.log('medias : ', medias)
+    medias.forEach(m => {
+        const media = mediaFactory(m)
+        console.log(media)
+        const mediaDOM = media.buildDOMRepresentation()
+        console.log(mediaDOM)
+        gallerySection.appendChild(mediaDOM)
+    });
 }
 
 
 async function init() {
     // Récupère les datas des photographes
-    const photographer = await getPhotographer();
-    if(photographer) displayPhotographer(photographer); // doit display une error dans le cas contraire ou plutot dans le catch?
+    const {photographers, medias} = await fetchPhotographersnMedias()
+
+    const params = (new URL(document.location)).searchParams
+    const currentPhotographerId = parseInt(params.get('id'))
+    const photographer = photographers.filter(photographer => photographer.id === currentPhotographerId)[0]
+    // console.log(photographer)
+    if(photographer) displayPhotographer(photographer) // doit display une error dans le cas contraire ou plutot dans le catch?
+    const filteredMedias = medias.filter(media => media.photographerId === currentPhotographerId)
+    if(filteredMedias.length) displayMedias(filteredMedias)
 };
 
 init();

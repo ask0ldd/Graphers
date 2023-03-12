@@ -198,14 +198,3 @@ h1 {
   color: #901c1c;
   margin-top: 0.5rem;
 }
-
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.gallery article {
-  flex: 1 1 33%;
-  display: flex;
-  flex-direction: column;
-}
