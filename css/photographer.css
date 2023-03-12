@@ -96,11 +96,12 @@ form input {
   row-gap: 24px;
   column-gap: 88px;
   width: calc(100% - 200px);
+  /*justify-content: space-between;*/
 }
 
 .gallery article {
   flex: 1 1 25%;
-  max-width: calc((100% - 2 * 88px) / 3);
+  max-width: 33%;
   display: flex;
   flex-direction: column;
 }
@@ -110,4 +111,19 @@ form input {
   width: 100%;
   object-fit: cover;
   aspect-ratio: 35 / 30;
+  max-height: 430px;
+}
+
+.gallery .mediaInfos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 56px;
+  align-items: center;
+}
+
+.gallery h2 {
+  color: #901c1c;
+  font-weight: 400;
+  font-size: 24px;
 }

@@ -47,8 +47,6 @@ class Media {
     get title() { return this.#title }
     get date()  { return this.#date }
     get price() { return this.#price+'$' }
-
-
 }
 
 class Image extends Media{
@@ -65,6 +63,7 @@ class Image extends Media{
         const mediaContainer = document.createElement( 'article' )
         const img = document.createElement( 'img' )
         const datasContainer = document.createElement( 'div' )
+        datasContainer.classList.add("mediaInfos")
         const heading = document.createElement( 'h2' )
         const likes = document.createElement( 'p' )
 
@@ -94,6 +93,7 @@ class Video extends Media{
         const mediaContainer = document.createElement( 'article' )
         const video = document.createElement( 'video' )
         const datasContainer = document.createElement( 'div' )
+        datasContainer.classList.add("mediaInfos")
         const heading = document.createElement( 'h2' )
         const likes = document.createElement( 'p' )
 
