@@ -110,7 +110,7 @@ form input {
 .gallery video {
   width: 100%;
   object-fit: cover;
-  height: 430px;
+  height: 450px;
 }
 
 .gallery .mediaInfos {
