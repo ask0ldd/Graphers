@@ -3,11 +3,11 @@ const getIdParam = () => {
     return parseInt(params.get('id'))
 }
 
-async function fetchSelectedPhotographerDatas(id){
+/*async function fetchSelectedPhotographerDatas(id){
     try{
         const response =  await fetch("../data/photographers.json")
         const datas = await response.json()
-        /*return {photographers : datas.photographers, medias : datas.media}*/
+        // return {photographers : datas.photographers, medias : datas.media}
         photographer = datas.photographers.filter(photographer => photographer.id === id)[0]
         medias = datas.media.filter(media => media.photographerId === id)
         return ({photographerInfos : photographer, medias : medias})
@@ -15,7 +15,7 @@ async function fetchSelectedPhotographerDatas(id){
     catch(error){
         console.error(error)
     }
-}
+}*/
 
 /*async function displayPhotographer(photographer) {
 
@@ -43,7 +43,7 @@ async function fetchSelectedPhotographerDatas(id){
 async function init() {
     // Récupère les datas des photographes
     const currentPhotographerId = getIdParam()
-    const {photographerInfos, medias} = await fetchSelectedPhotographerDatas(currentPhotographerId)
+    const {photographerInfos, medias} = await fetchFreelancer(currentPhotographerId)
     const freelancer = new Freelancer(photographerInfos, medias)
     freelancer.buildDOMfor('photographer', '.gallery')
 };

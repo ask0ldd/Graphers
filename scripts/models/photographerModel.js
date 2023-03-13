@@ -1,3 +1,5 @@
+//renommer en freelancer infos
+
 class Photographer {
 	#name
 	#id

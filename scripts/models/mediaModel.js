@@ -31,6 +31,7 @@ class Media {
     #likes
     #date
     #price
+    #liked
     constructor(media){
         if(!media.id || !media.photographerId || !media.title || !media.date || !media.price) throw new Error('Cant create the requested object with such datas')
         this.#id = media.id
@@ -39,6 +40,7 @@ class Media {
         this.#title = media.title
         this.#date = media.date
         this.#price = media.price
+        this.#liked = false
     }
 
     get id()    { return this.#id }
@@ -47,6 +49,11 @@ class Media {
     get title() { return this.#title }
     get date()  { return this.#date }
     get price() { return this.#price+'$' }
+    get liked() { return this.#liked }
+    switchLiked() { 
+        this.#liked === false ? this.#liked++ : this.#liked--
+        this.#liked = !this.#liked 
+    }
 }
 
 class Image extends Media{
