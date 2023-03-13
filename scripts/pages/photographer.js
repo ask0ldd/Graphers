@@ -3,7 +3,7 @@ const getIdParam = () => {
     return parseInt(params.get('id'))
 }
 
-async function fetchPhotographerDatas(id){
+async function fetchSelectedPhotographerDatas(id){
     try{
         const response =  await fetch("../data/photographers.json")
         const datas = await response.json()
@@ -43,9 +43,7 @@ async function fetchPhotographerDatas(id){
 async function init() {
     // Récupère les datas des photographes
     const currentPhotographerId = getIdParam()
-    const {photographerInfos, medias} = await fetchPhotographerDatas(currentPhotographerId)
-    /*if(photographer) displayPhotographer(photographer) // doit display une error dans le cas contraire ou plutot dans le catch?
-    if(medias.length) displayMedias(medias)*/
+    const {photographerInfos, medias} = await fetchSelectedPhotographerDatas(currentPhotographerId)
     const freelancer = new Freelancer(photographerInfos, medias)
     freelancer.buildDOMfor('photographer', '.gallery')
 };

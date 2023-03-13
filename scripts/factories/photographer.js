@@ -1,6 +1,6 @@
-function photographerFactory(photographer) {
+function photographerFactory(photographerInfos) {
 
-    const picture = photographer.portrait
+    /*const picture = photographer.portrait
     const name = photographer.name
     const id = photographer.id
 
@@ -39,5 +39,7 @@ function photographerFactory(photographer) {
         article.appendChild(fees)// ADDED
         return (article)
     }
-    return { name, picture, getUserCardDOM }
+    return { name, picture, getUserCardDOM }*/
+
+    return new Photographer(photographerInfos)
 }

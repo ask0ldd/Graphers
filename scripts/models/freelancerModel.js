@@ -4,8 +4,8 @@ class Freelancer {
     #works
 
     constructor(freelancerInfos, freelancerWorks){
-
-        this.#infos = photographerFactory(new Photographer(freelancerInfos)) // passer juste les infos pas besoin de new car l'instanciation doit se faire dans la factory
+        console.log(freelancerInfos)
+        this.#infos = photographerFactory(freelancerInfos) // passer juste les infos pas besoin de new car l'instanciation doit se faire dans la factory
         
         let mediaLibrary = []
         freelancerWorks.forEach( m => mediaLibrary.push(mediaFactory(m)) )

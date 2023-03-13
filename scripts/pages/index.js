@@ -46,7 +46,14 @@
     async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
-        if(photographers) displayData(photographers); // display une error dans le cas contraire
+        // if(photographers) displayData(photographers); // display une error dans le cas contraire
+        let photographersList = []
+        const photographersSection = document.querySelector(".photographer_section")
+        photographers.forEach(photographer => {
+            const photographerInst = photographerFactory(photographer)
+            photographersList.push(photographerInst)
+            photographersSection.appendChild(photographerInst.buildDOMRepresentation());
+        })
     };
     
     init();

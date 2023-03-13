@@ -4,7 +4,7 @@ class Photographer {
 	#city
 	#country
 	#tagline
-	#price
+	#fees
 	#portrait
 
     constructor(userDatas){
@@ -13,7 +13,7 @@ class Photographer {
 		this.#city = userDatas.city
 		this.#country = userDatas.country
 		this.#tagline = userDatas.tagline
-		this.#price = userDatas.price
+		this.#fees = userDatas.price
 		this.#portrait = userDatas.portrait
     }
 
@@ -29,7 +29,7 @@ class Photographer {
 	}
 
 	get dailyfees(){
-		return this.#price+'€/jour'
+		return this.#fees+'€/jour'
 	}
 
 	get quote(){
@@ -39,6 +39,43 @@ class Photographer {
 	get location(){
 		return this.#city + ', ' + this.#country
 	}
+
+	buildDOMRepresentation(){
+		const photographerCard = document.createElement( 'article' )
+        const anchor = document.createElement('a')
+
+        anchor.setAttribute("href", 'photographer.html?id=' + this.#id)
+        const img = document.createElement( 'img' )
+        img.setAttribute("src", this.portrait)
+        img.setAttribute("alt", this.name + ' picture')
+
+        anchor.appendChild(img)
+        // img.style.objectFit="cover" // ADDED
+        const h2 = document.createElement( 'h2' )
+        h2.textContent = this.name // ADDED
+
+        // h2 dans figcaption / img + figcaption dans figure?
+
+        const location = document.createElement( 'p' ) // ADDED
+        location.textContent = this.location // ADDED
+        location.className="location" // ADDED
+
+        const quote = document.createElement('p') // ADDED
+        quote.textContent = this.name // ADDED
+        quote.className="quote" // ADDED
+
+        const fees = document.createElement('p') // ADDED
+        fees.textContent = this.dailyfees // ADDED
+        fees.className="fees" // ADDED
+
+        photographerCard.appendChild(anchor)
+        photographerCard.appendChild(h2)
+        photographerCard.appendChild(location)// ADDED
+        photographerCard.appendChild(quote)// ADDED
+        photographerCard.appendChild(fees)// ADDED
+        return photographerCard
+	}
+
 
 	/* utiliser setter pour total likes? */
 }
